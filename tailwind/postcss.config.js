@@ -1,13 +1,12 @@
-const postcssPresetEnv = require("postcss-preset-env");
-
 module.exports = {
-  plugins: [
-    postcssPresetEnv(),
-    require('postcss-import'),
-    require('tailwindcss/nesting')(require('postcss-nesting')),
-    require('tailwindcss'),
-    require('postcss-preset-env')({
-      features: { 'nesting-rules': false }
-    }),
-  ],
+  plugins: {
+    'postcss-import': {},
+    'tailwindcss/nesting': 'postcss-nesting',
+    tailwindcss: {},
+    autoprefixer: {},
+    'postcss-preset-env': {
+      features: { 'nesting-rules': false },
+    },
+    ...(process.env.NODE_ENV === 'production' ? { cssnano: {} } : {})
+  }
 };

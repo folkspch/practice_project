@@ -17,7 +17,7 @@ module.exports = merge(common, {
   },
   devServer: {
     host: "0.0.0.0",
-    port: 8000,
+    port: 9091,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -25,8 +25,8 @@ module.exports = merge(common, {
       writeToDisk: true,
     },
     watchFiles: [
-      Path.join(__dirname, '../../phoenix2/**/*.py'),
-      Path.join(__dirname, '../../phoenix2/**/*.html'),
+      Path.join(__dirname, '../../**/*.py'),
+      Path.join(__dirname, '../../templates/**/*.html'),
     ],
   },
   plugins: [
