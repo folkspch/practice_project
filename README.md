@@ -14,12 +14,12 @@ source [envname]/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-* go to tailwindApp folder this is a tailwind configuration folder
+* go to tailwind folder
 ```bash
-cd tailwindApp
+cd tailwind
 ```
 * update npm package 
-* =========== only update npm in [tailwindApp/static_src] folder ===========
+* =========== only update npm in [tailwind] folder ===========
 ```bash
 npm i
 npm upgrade
@@ -28,12 +28,16 @@ npm upgrade
 ## Start dev
 start environment
 ```bash
-source penv/bin/activate
+source [envname]/bin/activate
 ```
-run server
+[First Terminal] run django server
 ```bash
 python manage.py runserver 
-python manage.py tailwind start
+```
+[Second Terminal] run tailwind server
+```bash
+cd tailwind
+npm run watch
 ```
 ##
 
