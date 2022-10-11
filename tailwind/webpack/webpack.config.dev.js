@@ -15,20 +15,20 @@ module.exports = merge(common, {
     chunkFilename: "js/[name].chunk.js",
     publicPath: "http://localhost:9091/",
   },
-devServer: {
-  host: "0.0.0.0",
-  port: 9091,
-  headers: {
-    "Access-Control-Allow-Origin": "*",
+  devServer: {
+    host: "0.0.0.0",
+    port: 8000,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+    },
+    devMiddleware: {
+      writeToDisk: true,
+    },
+    watchFiles: [
+      Path.join(__dirname, '../../phoenix2/**/*.py'),
+      Path.join(__dirname, '../../phoenix2/**/*.html'),
+    ],
   },
-  devMiddleware: {
-    writeToDisk: true,
-  },
-  watchFiles: [
-    Path.join(__dirname, '../../phoenix2/**/*.py'),
-    Path.join(__dirname, '../../phoenix2/**/*.html'),
-  ],
-},
   plugins: [
     new Webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify("development"),
