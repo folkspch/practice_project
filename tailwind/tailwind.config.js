@@ -11,6 +11,7 @@ const contentPaths = [...projectPaths];
 console.log(`tailwindcss will scan ${contentPaths}`);
 
 module.exports = {
+  tailwindConfig: './tailwind.config.js',
   content: contentPaths,
   theme: {
     extend: {       
@@ -48,5 +49,9 @@ module.exports = {
         // 2xl	1536px
       }
   },
-  plugins: [],
+  plugins: [
+    require('prettier-plugin-tailwindcss'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
+  ],
 };
