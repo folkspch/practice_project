@@ -46,8 +46,12 @@ Static file is store in
 tailwind/static
 can use in template with
 
-`{% load webpack_loader static %}`
-`<img src="{% static 'static/images/webpack.png' %}"/>`
+at roothtml
+`{% load webpack_loader static %}` 
+
+in page
+`{% load static %}` 
+`<img src="{% static 'images/webpack.png' %}"/>`
 
 
 ## Available Scripts
