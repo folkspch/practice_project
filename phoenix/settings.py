@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # 3rd party
+  
 ]
 
 MIDDLEWARE = [
@@ -118,17 +120,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static_collect'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static"),
-# ]
+
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [ os.path.join(BASE_DIR,'static') ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_collect')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-WEBPACK_LOADER = {
-    'MANIFEST_FILE': os.path.join(BASE_DIR, "tailwind/build/manifest.json"),
-}

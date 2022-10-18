@@ -14,18 +14,10 @@ source [envname]/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-* go to tailwind folder
-```bash
-cd tailwind
-```
-* update npm package 
-* =========== only update npm in [tailwind] folder ===========
-```bash
-npm i
-npm upgrade
-```
+
 
 ## Start dev
+
 start environment
 ```bash
 source [envname]/bin/activate
@@ -35,41 +27,21 @@ source [envname]/bin/activate
 python manage.py runserver 
 ```
 [Second Terminal] run tailwind server
+---watch mode - this mode will update output.css in realtime.
 ```bash
-cd tailwind
-npm run start
+tailwindcss -i ./static/src/main.css -o ./static/src/output.css --watch
 ```
 
-## Static file
+minifying css for production
+```bash
+tailwindcss -i ./static/src/main.css -o ./static/src/output.css --minify
+```
 
-Static file is store in 
-tailwind/static
-can use in template with
+Help text of pytailwindcss
+run
+```bash
+tailwindcss
+```
 
-at roothtml
-`{% load webpack_loader static %}` 
-
-in page
-`{% load static %}` 
-`<img src="{% static 'images/webpack.png' %}"/>`
-
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm run start`
-
-`npm run start` will launch a server process, which makes `live reloading` possible.
-
-If you change JS or SCSS files, the web page would auto refresh after the change. Now the server is working on port 9091 by default, but you can change it in `webpack/webpack.config.dev.js`
-
-### `npm run watch`
-
-run webpack in `watch` mode.
-
-### `npm run build`
-
-[production mode](https://webpack.js.org/guides/production/), Webpack would focus on minified bundles, lighter weight source maps, and optimized assets to improve load time.
 
 
