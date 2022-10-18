@@ -1,18 +1,6 @@
-const Path = require("path");
-const pwd = process.env.PWD;
-
-// We can add current project paths here
-const projectPaths = [
-    Path.join(pwd, "../templates/**/*.html"),
-    // add js file paths if you need
-];
-
-const contentPaths = [...projectPaths];
-console.log(`tailwindcss will scan ${contentPaths}`);
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  tailwindConfig: './tailwind.config.js',
-  content: contentPaths,
+  content: ['../templates/**/*.{html,js}'],
   theme: {
     extend: {       
         colors: {
@@ -50,8 +38,8 @@ module.exports = {
       }
   },
   plugins: [
-    require('prettier-plugin-tailwindcss'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
   ],
-};
+}
+

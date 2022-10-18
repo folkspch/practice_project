@@ -1,15 +1,14 @@
-{% load webpack_loader static %} <!-- new -->
+{% load static %} <!-- new -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="../tailwind/output.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Basic Django Project</title>
 
-  {% stylesheet_pack 'index' %} <!-- new, referring to index.css --> 
-  {% javascript_pack 'index' attrs='defer' %} <!-- new, referring to index.js -->
 </head>
 <body>
   <div class="jumbotron">
