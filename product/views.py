@@ -15,7 +15,7 @@ def product_view(request):
     }
     # print(query_set)
     # print(type(context))
-    return render(request, "product_view.html", context)
+    return render(request, "product/product_view.html", context)
 
 def product_create(request):
     name = request.POST['name']
@@ -89,7 +89,7 @@ def product_sendEmail(request):
     # }
     # print(query_set)
     # print(type(context))
-    return render(request, "product_sendEmail.html")
+    return render(request, "product/product_sendEmail.html")
 
 def send_email(request):
     subject = request.POST["subject"]

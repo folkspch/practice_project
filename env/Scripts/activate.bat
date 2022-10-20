@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\folk_\OneDrive\Documents\PracticeProj\phoenix-webpack\env
+set VIRTUAL_ENV=C:\Users\losts\OneDrive\เดสก์ท็อป\phoenix-webpack\env
 
 if not defined PROMPT set PROMPT=$P$G
 

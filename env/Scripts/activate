@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\folk_\OneDrive\Documents\PracticeProj\phoenix-webpack\env"
+VIRTUAL_ENV="C:\Users\losts\OneDrive\เดสก์ท็อป\phoenix-webpack\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
