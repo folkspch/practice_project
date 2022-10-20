@@ -14,6 +14,7 @@ yarn.lock
 .vscode
 .idea
 penv
+env
 p310
 __pycache__/
 migrations/__pycache__/
