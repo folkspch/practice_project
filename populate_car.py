@@ -1,6 +1,6 @@
 import os
 from pydoc import describe
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'src.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'phoenix.settings')
 import django
 django.setup()
 

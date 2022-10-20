@@ -11,7 +11,7 @@ class StaffForm(forms.ModelForm):
     mobile_phone   = forms.CharField(widget=forms.TextInput(attrs={'class': inputStyle}))
     password  = forms.CharField(widget=forms.TextInput(attrs={'class': inputStyle}))
     address = forms.CharField(widget=forms.TextInput(attrs={'class': inputStyle}))
-    dob = forms.DateField(widget=forms.TextInput(attrs={'class': inputStyle}))
+    dob = forms.DateField(widget=forms.TextInput(attrs={'class': inputStyle,"type":"date"}))
     role = forms.CharField(widget=forms.TextInput(attrs={'class': inputStyle}))
     code = forms.CharField(widget=forms.TextInput(attrs={'class': inputStyle}))
 
