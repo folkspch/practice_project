@@ -1,4 +1,4 @@
-"""phoenix URL Configuration
+"""src URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -15,9 +15,25 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
+from main.views import (
+    product_sendEmail,
+    product_view,
+    product_create,
+    product_update,
+    product_delete,
+    product_get,
+    product_sendEmail,
+    send_email
+    )
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name="_base.html")),
     path('admin/', admin.site.urls),
+    path('', product_view),
+    path('view/', product_view),
+    path('create/', product_create),
+    path('get/<int:id>/', product_get), 
+    path('update/<int:id>/', product_update), 
+    path('delete/<int:id>/', product_delete),
+    path('sendEmail/',product_sendEmail),
+    path('send_email/',send_email)
 ]
