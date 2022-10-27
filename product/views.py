@@ -4,10 +4,12 @@ from .models import Product
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.core.mail import send_mail
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
 
+@login_required(login_url='/staff/login')
 def product_view(request):
     query_set = Product.objects.all().values()
     context ={
