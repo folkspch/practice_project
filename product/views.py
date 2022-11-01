@@ -1,3 +1,4 @@
+from unittest import result
 from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import Product
@@ -119,3 +120,13 @@ def send_email(request):
     else:
         return HttpResponse('Make sure all fields are entered and valid.')
     
+
+def search(request):
+    search_key = request.POST['search']
+    if request.method == 'POST':
+        result = Product.objects.filter(name__contains=search_key)
+        return render(request,'product_search.html',{'search_result':result})
+
+    else:
+        return render(request,'product_search.html',{})
+

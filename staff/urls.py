@@ -7,6 +7,7 @@ from .views import (
     staff_delete,
     login_view,
     logout_view,
+    register_view
     )
 urlpatterns = [
     path('', staff_view),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('delete/<int:id>/', staff_delete),
     path('login/', login_view),
     path('logout/', logout_view),
+    path('registeration/', register_view),
 ]

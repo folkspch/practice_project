@@ -1,0 +1,82 @@
+{% extends 'components/base.html' %}
+{% block content %}
+<div>
+
+    <div>
+        <div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
+
+            <table class="min-w-full leading-normal">
+                <thead>
+                    <tr>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Name
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Description
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Quantity
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Price
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Is Available
+                        </th>
+                        <th
+                            class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in search_result %}
+                    <tr>
+                        <td class="text-left px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            {{x.name}}
+                        </td>
+                        <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            {{x.description}}
+                        </td>
+                        <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            <div>
+                                {% if x.quantity <= 100 %} <p style="font-size:22px;color: green">
+                                    {{x.quantity|floatformat:'g'}}</p>
+                                    {% else %}
+                                    <p style="font-size:22px;color: red">{{x.quantity|floatformat:'g'}}</p>
+                                    {% endif %}
+                            </div>
+                            <!-- {{x.quantity|floatformat:'g'}} -->
+                        </td>
+                        <td class="text-left px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            {{x.price|floatformat:'g'}}
+                        </td>
+                        <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            <div>
+                                {% if x.is_available %}
+                                <i class="material-icons" style="font-size:22px;color: green">check</i>
+                                {% else %}
+                                <i class="material-icons" style="font-size:22px;color: red">close</i>
+                                {% endif %}
+                            </div>
+
+                            <!-- {{x.is_available}} -->
+                        </td>
+                        <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                            <!-- <a href="/update/{{x.id}}"> edit </a>|<a href="/delete/{{x.id}}"> del </a> -->
+                            <a class="cursor-pointer" id="{{x.id}}" onclick="openEditModal(id)">EDIT</a> |
+                            <a class="cursor-pointer" id="{{x.id}}" onclick="openDelModal(id)">DEL</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{%endblock%}

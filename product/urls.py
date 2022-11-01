@@ -8,7 +8,8 @@ from .views import (
     product_delete,
     product_get,
     product_sendEmail,
-    send_email
+    send_email,
+    search
     )
 
 urlpatterns = [
@@ -19,5 +20,6 @@ urlpatterns = [
     path('update/<int:id>/', product_update), 
     path('delete/<int:id>/', product_delete),
     path('sendEmail/',product_sendEmail),
-    path('send_email/',send_email)
+    path('send_email/',send_email),
+    path('search/',search,name='search')
 ]

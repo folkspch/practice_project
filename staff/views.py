@@ -84,25 +84,25 @@ def logout_view(request):
     messages.info(request, "Logged out successfully!")
     return redirect("/staff/login") #logoutแล้วไปหน้าที่เรากำหนด แก้ได้                    
 
-# def register_view(request):
-#     if request.method == "POST":
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             #เมื่อสมัครเสร็จแล้วจะให้เด้งไปหน้าไหน
-#             return redirect("/admin")
+def register_view(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            #เมื่อสมัครเสร็จแล้วจะให้เด้งไปหน้าไหน
+            return redirect("/admin")
 
-#         #เพื่อแจ้งเตือน errorต่างๆ
-#         else:
-#             for msg in form.error_messages:
-#                 print(form.error_messages[msg])
+        #เพื่อแจ้งเตือน errorต่างๆ
+        else:
+            for msg in form.error_messages:
+                print(form.error_messages[msg])
 
-#             return render(request = request,
-#                           template_name = "register.html",
-#                           context={"form":form}) #นำ form ตรงนี้ไปใช้ใน register.htmlเพื่อrender
+            return render(request = request,
+                          template_name = "register.html",
+                          context={"form":form}) #นำ form ตรงนี้ไปใช้ใน register.htmlเพื่อrender
 
-#     #เนื่อจากข้างบนเป็น if-elseเลยต้องมีเผื่อไว้
-#     form = UserCreationForm
-#     return render(request = request,
-#                   template_name = "register.html",
-#                   context={"form":form})
+    #เนื่อจากข้างบนเป็น if-elseเลยต้องมีเผื่อไว้
+    form = UserCreationForm
+    return render(request = request,
+                  template_name = "register.html",
+                  context={"form":form})
