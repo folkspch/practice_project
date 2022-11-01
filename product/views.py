@@ -2,23 +2,30 @@ from django.shortcuts import render, redirect
 from .forms import ProductForm
 from .models import Product
 from django.http import HttpResponse, HttpResponseRedirect
-from django.conf import settings
 from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
-
+from .decorators import staff_only, allowed_users
+from django.contrib.sessions.models import Session
+from django.contrib.auth.models import User
 
 # Create your views here.
 
 @login_required(login_url='/staff/login')
+@staff_only
 def product_view(request):
+    session_key = request.session._session_key
+    session = Session.objects.get(session_key=session_key)
+    uid = session.get_decoded().get('_auth_user_id')
+    user = User.objects.get(pk=uid)
+    print(user.username, user.groups.all().get())
     query_set = Product.objects.all().values()
     context ={
         "object": query_set 
     }
-    # print(query_set)
-    # print(type(context))
+
     return render(request, "product/product_view.html", context)
 
+@allowed_users(allowed_roles=['admin'])
 def product_create(request):
     name = request.POST['name']
     desc = request.POST['desc']
@@ -41,6 +48,7 @@ def product_create(request):
     # }
     # return render(request, "product_create.html", context)
 
+@allowed_users(allowed_roles=['admin'])
 def product_update(request, id):
     name = request.POST['name']
     desc = request.POST['desc']
@@ -69,7 +77,7 @@ def product_update(request, id):
     #     'form': form
     # }
     # return render(request, "product_update.html", context)
-
+@allowed_users(allowed_roles=['admin'])
 def product_delete(request,id):
     print(id)
     obj = Product.objects.get(id=id)
@@ -84,6 +92,7 @@ def product_get(request,id):
     print(id)
     return id
 
+@allowed_users(allowed_roles=['admin'])
 def product_sendEmail(request):
     # query_set = Product.objects.all().values()
     # context ={

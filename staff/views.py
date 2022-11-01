@@ -1,4 +1,6 @@
 from django.shortcuts import render, redirect
+
+from product.decorators import allowed_users
 from .models import Staff
 from .forms import StaffForm
 import datetime
@@ -24,6 +26,7 @@ def staff_view(request):
     print(now)
     return render(request, "staff/staff_view.html", context)
 
+@allowed_users(allowed_roles=['admin'])
 def staff_create(request):
     form = StaffForm(request.POST or None)
     if form.is_valid():
@@ -36,6 +39,7 @@ def staff_create(request):
     
     return render(request, "staff/staff_create.html", context)
 
+@allowed_users(allowed_roles=['admin'])
 def staff_update(request, id=id):
     obj = Staff.objects.get(id=id)
     form = StaffForm(request.POST or None, instance=obj)
@@ -47,6 +51,7 @@ def staff_update(request, id=id):
     }
     return render(request, "staff/staff_update.html", context)
 
+@allowed_users(allowed_roles=['admin'])
 def staff_delete(request, id):
     obj = Staff.objects.get(id=id)
     obj.delete()
