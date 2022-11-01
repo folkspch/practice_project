@@ -125,8 +125,8 @@ def search(request):
     search_key = request.POST['search']
     if request.method == 'POST':
         result = Product.objects.filter(name__contains=search_key)
-        return render(request,'product_search.html',{'search_result':result})
+        return render(request,'product/product_search.html',{'search_result':result})
 
     else:
-        return render(request,'product_search.html',{})
-
+        return render(request,'product/product_search.html',{})
+    
