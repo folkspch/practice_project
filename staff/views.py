@@ -104,5 +104,5 @@ def register_view(request):
     #เนื่อจากข้างบนเป็น if-elseเลยต้องมีเผื่อไว้
     form = UserCreationForm
     return render(request = request,
-                  template_name = "register.html",
+                  template_name = "login/register.html",
                   context={"form":form})
