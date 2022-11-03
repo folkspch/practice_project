@@ -90,7 +90,7 @@ def register_view(request):
         if form.is_valid():
             user = form.save()
             #เมื่อสมัครเสร็จแล้วจะให้เด้งไปหน้าไหน
-            return redirect("/admin")
+            return redirect("/staff/login")
 
         #เพื่อแจ้งเตือน errorต่างๆ
         else:
@@ -98,7 +98,7 @@ def register_view(request):
                 print(form.error_messages[msg])
 
             return render(request = request,
-                          template_name = "register.html",
+                          template_name = "login/register.html",
                           context={"form":form}) #นำ form ตรงนี้ไปใช้ใน register.htmlเพื่อrender
 
     #เนื่อจากข้างบนเป็น if-elseเลยต้องมีเผื่อไว้

@@ -101,10 +101,12 @@
                                 class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Is Available
                             </th>
+                            {% if user == "admin" %}
                             <th
                                 class="px-5 py-3 border-b-2 border-gray-300 bg-gray-200 text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                 Action
                             </th>
+                            {% endif %}
                         </tr>
                     </thead>
                     <tbody>
@@ -140,11 +142,13 @@
 
                                 <!-- {{x.is_available}} -->
                             </td>
+                            {% if user == "admin" %}
                             <td class="text-center px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                                 <!-- <a href="/update/{{x.id}}"> edit </a>|<a href="/delete/{{x.id}}"> del </a> -->
                                 <a class="cursor-pointer" id="{{x.id}}" onclick="openEditModal(id)">EDIT</a> |
                                 <a class="cursor-pointer" id="{{x.id}}" onclick="openDelModal(id)">DEL</a>
                             </td>
+                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>

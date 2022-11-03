@@ -18,10 +18,13 @@ def product_view(request):
     session = Session.objects.get(session_key=session_key)
     uid = session.get_decoded().get('_auth_user_id')
     user = User.objects.get(pk=uid)
-    print(user.username, user.groups.all().get())
+    user_role = user.groups.all().get()
+    user_role = str(user_role)
+    print(type(user_role))
     query_set = Product.objects.all().values()
     context ={
-        "object": query_set 
+        "object": query_set,
+        "user": user_role
     }
 
     return render(request, "product/product_view.html", context)
