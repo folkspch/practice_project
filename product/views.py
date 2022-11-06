@@ -8,6 +8,7 @@ from django.contrib.auth.decorators import login_required
 from .decorators import staff_only, allowed_users
 from django.contrib.sessions.models import Session
 from django.contrib.auth.models import User
+import requests
 
 # Create your views here.
 
@@ -133,3 +134,12 @@ def search(request):
     else:
         return render(request,'product/product_search.html',{})
     
+def test(request):
+    response = requests.get('https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/')
+    data = response.json()
+    print(data["data"])
+    return render(request,'product/test.html',{"data":data["data"]})
+
+def select():
+    
+    return

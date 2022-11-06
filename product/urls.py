@@ -9,7 +9,8 @@ from .views import (
     product_get,
     product_sendEmail,
     send_email,
-    search
+    search,
+    test
     )
 
 urlpatterns = [
@@ -21,5 +22,6 @@ urlpatterns = [
     path('delete/<int:id>/', product_delete),
     path('sendEmail/',product_sendEmail),
     path('send_email/',send_email),
-    path('search/',search,name='search')
+    path('search/',search,name='search'),
+    path('test/',test,name='test')
 ]
