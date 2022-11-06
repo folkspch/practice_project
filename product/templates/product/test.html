@@ -1,0 +1,25 @@
+{% extends 'components/base.html' %}
+{% block content %}
+<div>
+    <!-- <button onchange="getdata()">send API</button> -->
+    <form>
+        {%csrf_token%}
+        <select>
+            {% for x in data %}
+
+            <option onchange="" value="{{x.province}}">{{x.province}}</option>
+            
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<script>
+    function getdata() {
+        const Http = new XMLHttpRequest();
+        const url = 'https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/';
+        Http.open("GET", url);
+        Http.send();
+        console.log(Http.responseText);
+    }
+</script>
+{%endblock%}
