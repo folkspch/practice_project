@@ -4,22 +4,76 @@
     <!-- <button onchange="getdata()">send API</button> -->
     <form>
         {%csrf_token%}
-        <select>
+        <select id="province" onchange="get_district(value)">
+            <option value="" disabled selected>จังหวัด</option>
             {% for x in data %}
 
-            <option onchange="" value="{{x.province}}">{{x.province}}</option>
-            
+            <option value="{{x.province}}">{{x.province}}</option>
+
             {% endfor %}
+        </select>
+        <select id="district" onchange="get_subdistrict(value)">
+            <option value="" disabled selected>อำเภอ</option>
+        </select>
+        <select id="subdistrict">
+            <option value="" disabled selected>ตำบล</option>
         </select>
     </form>
 </div>
 <script>
-    function getdata() {
-        const Http = new XMLHttpRequest();
-        const url = 'https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/';
-        Http.open("GET", url);
-        Http.send();
-        console.log(Http.responseText);
+    async function get_district(x) {
+        let list
+        if (x == "") {
+            return
+        }
+        fetch(`https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/${x}/district`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                list = data
+                // console.log(list.length);
+                console.log(list);
+                let choice_province = document.getElementById("district");
+                choice_province.innerHTML = ""
+                let choice_subdistrict = document.getElementById("subdistrict");
+                choice_subdistrict.innerHTML = ""
+                // console.log(choice_province.length);
+                for (let i = 0; i < list.data.length; i++) {
+                    let option = document.createElement("option");
+                    option.text = list.data[i]
+                    option.value = list.data[i]
+                    choice_province.add(option);
+                }
+            })
     }
+    async function get_subdistrict(x) {
+        let list
+        if (x == "") {
+            return
+        }
+        let province = document.getElementById("province").value
+        let district = document.getElementById("district").value
+        console.log(province,district);
+
+        fetch(`https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/${province}/district/${district}`)
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                list = data
+                // console.log(list.length);
+                console.log(list);
+                let choice_subdistrict = document.getElementById("subdistrict");
+                choice_subdistrict.innerHTML = ""
+                // console.log(choice_province.length);
+                for (let i = 0; i < list.data.length; i++) {
+                    let option = document.createElement("option");
+                    option.text = list.data[i]
+                    option.value = list.data[i]
+                    choice_subdistrict.add(option);
+                }
+            })
+    }
+
+
 </script>
 {%endblock%}
